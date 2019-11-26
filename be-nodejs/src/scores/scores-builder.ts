@@ -10,18 +10,15 @@ export class ScoresBuilder {
             var nextRoll: number = inputScores[1] || 0;
             var secondNextRoll: number = inputScores[2] || 0;
             
-            if (thisRoll === 10){
-                // Strike logic
+            if (this.isStrike(thisRoll)){
                 outputScores[i] = thisRoll + nextRoll + secondNextRoll + priorFrameScore;
                 inputScores.splice(0, 1);
             }
-            else if (thisRoll + nextRoll === 10){
-                // Spare Logic
+            else if (this.isSpare(thisRoll, nextRoll)){
                 outputScores[i] = thisRoll + nextRoll + secondNextRoll + priorFrameScore;
                 inputScores.splice(0, 2);
             }
             else {
-                // Frame Logic
                 outputScores[i] = thisRoll + nextRoll + priorFrameScore;
                 inputScores.splice(0, 2);
             }
@@ -44,5 +41,15 @@ export class ScoresBuilder {
             }
             return Number(x);
         });
+    }
+
+    private isSpare(roll1: number, roll2: number): boolean {
+        const SPARE_ROLL: number = 10;
+        return (roll1 + roll2) === SPARE_ROLL;
+    }
+
+    private isStrike(roll: number): boolean {
+        const STRIKE_ROLL: number = 10;
+        return roll === STRIKE_ROLL;
     }
 }
