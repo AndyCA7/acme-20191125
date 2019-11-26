@@ -10,5 +10,6 @@ export class GreetingsBuilder {
         }
 
         return {text: 'Hello, World!'};
+
     }
 }

@@ -15,8 +15,9 @@ describe('GreetingsBuilder', () => {
 
     describe('build', () => {
 
-        it('should return "Hello World!"', () => {
-            expect(greetingsBuilder.build().text).toBe('Hello, World!');
+        it('should return "Hello World!" when no parameter is supplied', () => {
+            const builderText = greetingsBuilder.build(); 
+            expect(builderText.text).toBe('Hello, World!');
         });
 
         it('should return a personalized greeting when given a name', () => {
