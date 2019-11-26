@@ -23,7 +23,7 @@ describe('GreetingsBuilder', () => {
         it('should return a personalized greeting when given a name', () => {
             const givenName: string = "Foo";
             expect(greetingsBuilder.build(givenName).text).toBe(`Hello, ${givenName}`);
-        })
+        });
 
     });
 
