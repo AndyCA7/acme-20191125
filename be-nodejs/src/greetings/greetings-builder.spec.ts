@@ -13,19 +13,17 @@ describe('GreetingsBuilder', () => {
         greetingsBuilder = app.get<GreetingsBuilder>(GreetingsBuilder);
     });
 
-    describe('Greeting Builder', () => {
+    describe('build', () => {
 
         it('should return "Hello World!" when no parameter is supplied', () => {
             const builderText = greetingsBuilder.build(); 
             expect(builderText.text).toBe('Hello, World!');
         });
 
-        it('should return a greeting when name supplied', () => {
-            const name = 'testy';
-            const result = greetingsBuilder.build(name);
-
-            expect(result.text).toBe(`Hello, ${name}!`);
-        })
+        it('should return a personalized greeting when given a name', () => {
+            const givenName: string = "Foo";
+            expect(greetingsBuilder.build(givenName).text).toBe(`Hello, ${givenName}`);
+        });
 
     });
 
