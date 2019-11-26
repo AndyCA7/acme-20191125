@@ -4,7 +4,11 @@ export interface Greeting {
 
 export class GreetingsBuilder {
 
-    build(): Greeting {
+    build(name?: string): Greeting {
+        if (name){
+            return { text: `Hello, ${name}` };
+        }
+
         return {text: 'Hello, World!'};
     }
 }
